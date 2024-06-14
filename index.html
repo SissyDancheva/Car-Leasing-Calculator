@@ -10,7 +10,7 @@
       <title>Car Leasing Calculator</title>
    </head>
 
-   <body>
+   <body onload="leasingCalc()">
       <main class="main">
          <section class="calculator-container">
             <h1>Car Leasing Calculator</h1>
@@ -21,8 +21,8 @@
                      <div class="form-group">
                         <label for="carType">Car Type:</label>
                         <select id="carType">
-                           <option>Brand New</option>
-                           <option>Used</option>
+                           <option value="brandNew">Brand New</option>
+                           <option value="used">Used</option>
                         </select>
                      </div>
                   </div>
@@ -53,6 +53,9 @@
                            min="10000"
                            value="120000"
                         />
+                        <span id="carValueError" class="error"
+                           >Value must be between €10,000 and €200,000</span
+                        >
                      </div>
                   </div>
                   <div class="col">
@@ -62,6 +65,9 @@
                            >Down Payment (10% - 50%):</label
                         >
                         <input type="text" id="downPayment" value="10" />
+                        <span id="downPaymentError" class="error"
+                           >Down Payment must be between 10% and 50%</span
+                        >
                      </div>
                   </div>
                </div>
@@ -97,23 +103,29 @@
                <h1>Leasing Details</h1>
                <div class="row">
                   <div class="col vl">
+                     <!-- Total Leasing Cost and Down Payment -->
                      <p>
-                        Total Leasing Cost: €<span class="totalCost"
+                        Total Leasing Cost: €<span class="output totalCost"
                            >128408.32</span
                         >
                      </p>
                      <p>
-                        Down Payment: €<span class="downPayment">12000.00</span>
+                        Down Payment: €<span class="output downPayment"
+                           >12000.00</span
+                        >
                      </p>
                   </div>
+                  <!-- Monthly Installment and Interest Rate-->
                   <div class="col">
                      <p>
-                        Monthly Installment: €<span class="monthlyInstallment"
+                        Monthly Installment: €<span
+                           class="output monthlyInstallment"
                            >1940.14</span
                         >
                      </p>
                      <p>
-                        Interest Rate: <span class="interestRate">2.99</span>%
+                        Interest Rate:
+                        <span class="output interestRate">2.99</span>%
                      </p>
                   </div>
                </div>
