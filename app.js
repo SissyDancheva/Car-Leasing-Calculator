@@ -27,6 +27,13 @@ function leasingCalc() {
    downPaymentInput.addEventListener('input', () => {
       downPaymentSlider.value = downPaymentInput.value;
       validateInputs();
+   function calcDownPayment() {
+      const carVal = Number(carValueInput.value);
+      const downPaymentPercent = Number(downPaymentInput.value) / 100;
+      const downPaymentResult = (carVal * downPaymentPercent).toFixed(2);
+      downPayment.textContent = downPaymentResult;
+      return downPaymentResult;
+   }
    function updateInterestRate() {
       const carType = carTypeSelect.value;
       let interestR;
