@@ -11,22 +11,30 @@ function leasingCalc() {
    const downPaymentSlider = document.getElementById('downPaymentSlider');
 
    carTypeSelect.addEventListener('change', updateInterestRate);
+   leasePeriodSelect.addEventListener('change', calcTotalLeasing);
+
    // Dynamicly change the text input value based on the slider and vice versa
    carValueSlider.addEventListener('input', () => {
       carValueInput.value = carValueSlider.value;
       validateInputs();
+      calcDownPayment();
    });
    carValueInput.addEventListener('input', () => {
       carValueSlider.value = carValueInput.value;
       validateInputs();
+      calcTotalLeasing();
    });
    downPaymentSlider.addEventListener('input', () => {
       downPaymentInput.value = downPaymentSlider.value;
       validateInputs();
+      calcTotalLeasing();
    });
    downPaymentInput.addEventListener('input', () => {
       downPaymentSlider.value = downPaymentInput.value;
       validateInputs();
+      calcTotalLeasing();
+   });
+
    function calcDownPayment() {
       const carVal = Number(carValueInput.value);
       const downPaymentPercent = Number(downPaymentInput.value) / 100;
@@ -54,6 +62,15 @@ function leasingCalc() {
       return monthlyPayment;
    }
 
+   function calcTotalLeasing() {
+      const monthPayment = calcMonthlyInstallment();
+      const leasePeriod = Number(leasePeriodSelect.value);
+      const downPay = calcDownPayment();
+
+      const totalLeasingCost = monthPayment * leasePeriod + Number(downPay);
+      totalCost.textContent = totalLeasingCost.toFixed(2);
+      return totalLeasingCost;
+   }
    function updateInterestRate() {
       const carType = carTypeSelect.value;
       let interestR;
