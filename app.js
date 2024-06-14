@@ -10,6 +10,7 @@ function leasingCalc() {
    const downPaymentInput = document.getElementById('downPayment');
    const downPaymentSlider = document.getElementById('downPaymentSlider');
 
+   carTypeSelect.addEventListener('change', updateInterestRate);
    // Dynamicly change the text input value based on the slider and vice versa
    carValueSlider.addEventListener('input', () => {
       carValueInput.value = carValueSlider.value;
@@ -26,6 +27,16 @@ function leasingCalc() {
    downPaymentInput.addEventListener('input', () => {
       downPaymentSlider.value = downPaymentInput.value;
       validateInputs();
+   function updateInterestRate() {
+      const carType = carTypeSelect.value;
+      let interestR;
+      if (carType === 'brandNew') interestR = 2.99;
+      if (carType === 'used') interestR = 3.7;
+      interestRate.textContent = interestR;
+
+      return interestR;
+   }
+
    // Validation of the input fields
    function validateInputs() {
       const carVal = Number(carValueInput.value);
