@@ -59,9 +59,16 @@
    padding-top: 10px;
    margin-top: 20px;
 }
-.vl{
-   border-right: 1px solid #A5A5A5;
+.vl {
+   border-right: 1px solid #a5a5a5;
 }
+.error {
+   color: red;
+   font-size: 0.8em;
+   display: none;
+   margin-top: 5px;
+}
+
 /*
   Notes: For better readability the code can be separated
     in different files (suitable for bigger projects,
