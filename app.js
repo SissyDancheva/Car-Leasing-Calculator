@@ -32,8 +32,28 @@ function leasingCalc() {
       const downPaymentPercent = Number(downPaymentInput.value) / 100;
       const downPaymentResult = (carVal * downPaymentPercent).toFixed(2);
       downPayment.textContent = downPaymentResult;
+      
       return downPaymentResult;
    }
+
+   function calcMonthlyInstallment() {
+      const carVal = Number(carValueInput.value);
+      const downPaymentRes = calcDownPayment();
+      const principal = carVal - downPaymentRes;
+      const leasePeriod = Number(leasePeriodSelect.value);
+      const annualInterestRate = updateInterestRate();
+      const monthlyInterestRate = annualInterestRate / 100 / 12;
+
+      const monthlyPayment =
+         (principal *
+            (monthlyInterestRate *
+               Math.pow(1 + monthlyInterestRate, leasePeriod))) /
+         (Math.pow(1 + monthlyInterestRate, leasePeriod) - 1);
+
+      monthlyInstallment.textContent = monthlyPayment.toFixed(2);
+      return monthlyPayment;
+   }
+
    function updateInterestRate() {
       const carType = carTypeSelect.value;
       let interestR;
