@@ -100,5 +100,10 @@ function leasingCalc() {
          downPaymentError.style.display = 'none';
       }
    }
+
+   // Initial validation of the form default inputs after the page loads
+   document.addEventListener('DOMContentLoaded', () => {
+      validateInputs();
+      calcTotalLeasing();
    });
 }
