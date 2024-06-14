@@ -1,0 +1,7 @@
+/*reseting the margins and padding of the entire website*/
+* {
+   padding: 0;
+   margin: 0;
+   text-decoration: none;
+}
+
