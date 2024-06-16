@@ -14,9 +14,7 @@ header {
    background-color: #a5a5a5;
    color: white;
    text-align: center;
-   position: absolute;
    padding: 15px 0;
-   top: 0;
    width: 100%;
    text-transform: capitalize;
    font-size: 18pt;
@@ -27,16 +25,17 @@ footer {
    background-color: #a5a5a5;
    color: white;
    text-align: center;
-   position: absolute;
+   position: fixed;
    padding: 15px 0;
    width: 100%;
    bottom: 0;
 }
 .main {
    display: flex;
-   justify-content: center;
    align-items: center;
-   padding: 1rem 0;
+   justify-content: center;
+   align-self: center;
+   height: 100%;
 }
 .calculator-container {
    background-color: white;
@@ -87,7 +86,7 @@ footer {
    padding-top: 15px;
    margin-top: 15px;
 }
-.details-container p{
+.details-container p {
    margin-bottom: 10px;
 }
 .vl {
@@ -106,13 +105,12 @@ footer {
 
 /* -------- RESPONSIVE  -------- */
 @media (max-width: 768px) {
+   .main {
+      padding: 20px 0;
+   }
    .car-info,
    .details-wrapper {
       flex-direction: column;
-   }
-   header,
-   footer {
-      position: relative;
    }
    .vl {
       display: none;
